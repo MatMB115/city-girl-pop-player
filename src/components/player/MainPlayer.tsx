@@ -26,7 +26,7 @@ export const MainPlayer = ({
                     boxShadow: `0 0 15px 4px ${currentColor}, 0 0 30px 8px ${currentColor}33`,
                 }}
             >
-                <div className="w-full h-[102%] md:h-[100.5%]">
+                <div className="w-full h-[102%] md:h-[100.5%] pointer-events-none">
                     <ReactPlayer
                         ref={playerRef}
                         url={playlist[currentVideoIndex].url}
