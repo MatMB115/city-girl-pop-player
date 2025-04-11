@@ -13,7 +13,6 @@ export const BackgroundVideo = ({ currentVideoIndex, startTimeInVideo }: Backgro
                 url={playlist[currentVideoIndex].url}
                 playing
                 muted
-                loop
                 width="100%"
                 height="100%"
                 config={{ playerVars: { start: startTimeInVideo } }}

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { playlist } from '@/constants/videos';
 
 const REFERENCE_TIMESTAMP = new Date("2025-01-01T00:00:00Z").getTime();
+const TRANSITION_BUFFER = 10; // 10 seconds buffer before video transition
 
 interface VideoTimeState {
     currentVideoIndex: number;
@@ -17,15 +18,21 @@ const calculateVideoTime = (): VideoTimeState => {
 
     // Find the current video based on elapsed time
     let index = 0;
+    let accumulatedTime = 0;
     for (let i = 0; i < playlist.length; i++) {
-        if (time < playlist[i].duration) {
+        const videoDuration = playlist[i].duration;
+        if (time < accumulatedTime + videoDuration - TRANSITION_BUFFER) {
             index = i;
             break;
         }
-        time -= playlist[i].duration;
+        accumulatedTime += videoDuration;
     }
 
-    return { currentVideoIndex: index, startTimeInVideo: time };
+    // Calculate the start time within the current video
+    let startTime = time - accumulatedTime;
+    if (startTime < 0) startTime = 0;
+
+    return { currentVideoIndex: index, startTimeInVideo: startTime };
 };
 
 export const useVideoTime = (): VideoTimeState => {
