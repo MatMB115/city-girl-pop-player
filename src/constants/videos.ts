@@ -26,7 +26,7 @@ export const playlist = [
     {
         url: "https://www.youtube.com/watch?v=8BbAlA1Tk5M",
         duration: 3680,
-        themeColor: "#0099ff", // light blue neon
+        themeColor: "#ff0000", // red neon
         title: "City Pop Girl Mix - Love Diary"
     },
     {

@@ -1,15 +1,15 @@
 import { useState, useEffect, useRef } from 'react';
 import { playlist } from '@/constants/videos';
 
-interface VideoTimeState {
+interface VideoPlayerState {
     currentVideoIndex: number;
     playerRef: React.RefObject<any>;
     startTimeInVideo: number;
     changeVideo: (index: number) => void;
 }
 
-export const useVideoTime = (): VideoTimeState => {
-    const [state, setState] = useState<VideoTimeState>({
+export const useVideoPlayer = (): VideoPlayerState => {
+    const [state, setState] = useState<VideoPlayerState>({
         currentVideoIndex: 0,
         playerRef: useRef<any>(null),
         startTimeInVideo: 0,

@@ -1,22 +1,19 @@
 import ReactPlayer from "react-player/youtube";
 import { playlist } from "@/constants/videos";
-import { useRef } from "react";
 
-interface MainPlayerProps {
+interface PlayerContainerProps {
     currentVideoIndex: number;
-    startTimeInVideo: number;
     volume: number;
     currentColor: string;
+    playerRef: React.RefObject<any>;
 }
 
-export const MainPlayer = ({
+export const PlayerContainer = ({
     currentVideoIndex,
-    startTimeInVideo,
     volume,
     currentColor,
-}: MainPlayerProps) => {
-    const playerRef = useRef<ReactPlayer>(null);
-
+    playerRef,
+}: PlayerContainerProps) => {
     return (
         <div className="relative z-10 flex items-center justify-center h-full px-4">
             <div
@@ -37,7 +34,6 @@ export const MainPlayer = ({
                         height="100%"
                         config={{
                             playerVars: {
-                                start: startTimeInVideo,
                                 modestbranding: 1,
                                 rel: 0,
                             },

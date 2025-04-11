@@ -2,18 +2,19 @@
 
 import React from "react";
 import { playlist } from "@/constants/videos";
-import Footer from "./common/Footer";
-import { useVideoTime } from "@/hooks/useVideoTime";
+import Footer from "@/components/common/Footer";
+import { useVideoPlayer } from "@/hooks/useVideoPlayer";
 import { useVolume } from "@/hooks/useVolume";
-import { VolumeControl } from "./player/VolumeControl";
-import { SocialLinks } from "./common/SocialLinks";
-import { BackgroundVideo } from "./player/BackgroundVideo";
-import { MainPlayer } from "./player/MainPlayer";
-import { MutedNotice } from "./player/MutedNotice";
-import { VideoTitle } from "./player/VideoTitle";
+import { VolumeControl } from "@/components/player/VolumeControl";
+import { SocialLinks } from "@/components/common/SocialLinks";
+import { BackgroundVideo } from "@/components/player/BackgroundVideo";
+import { PlayerContainer } from "@/components/player/PlayerContainer";
+import { MutedNotice } from "@/components/player/MutedNotice";
+import { VideoTitle } from "@/components/player/VideoTitle";
+import { NavigationButtons } from "@/components/player/NavigationButtons";
 
 export default function VideoPlayer() {
-    const { currentVideoIndex, startTimeInVideo } = useVideoTime();
+    const { currentVideoIndex, playerRef, changeVideo } = useVideoPlayer();
     const { volume, showMutedNotice, toggleMute, setVolume } = useVolume();
     const currentColor = playlist[currentVideoIndex].themeColor;
 
@@ -23,13 +24,18 @@ export default function VideoPlayer() {
                 <SocialLinks />
                 <BackgroundVideo
                     currentVideoIndex={currentVideoIndex}
-                    startTimeInVideo={startTimeInVideo}
+                    playerRef={playerRef}
                 />
                 <VideoTitle currentVideoIndex={currentVideoIndex} />
-                <MainPlayer
+                <PlayerContainer
                     currentVideoIndex={currentVideoIndex}
-                    startTimeInVideo={startTimeInVideo}
                     volume={volume}
+                    currentColor={currentColor}
+                    playerRef={playerRef}
+                />
+                <NavigationButtons
+                    currentVideoIndex={currentVideoIndex}
+                    onVideoChange={changeVideo}
                     currentColor={currentColor}
                 />
                 <MutedNotice

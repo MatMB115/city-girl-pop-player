@@ -19,7 +19,7 @@ Não possui props, pois é o componente raiz.
 ### Exemplo de Uso
 
 ```tsx
-import VideoPlayer from "@/components/VideoPlayer";
+import VideoPlayer from "@/components/player/VideoPlayer";
 
 export default function Home() {
   return (
@@ -39,9 +39,9 @@ O componente que renderiza o player de vídeo principal.
 | Prop | Tipo | Descrição |
 |------|------|-----------|
 | `currentVideoIndex` | `number` | Índice do vídeo atual na playlist |
-| `startTimeInVideo` | `number` | Tempo de início dentro do vídeo atual (em segundos) |
 | `volume` | `number` | Volume atual (0-1) |
 | `currentColor` | `string` | Cor do tema atual |
+| `playerRef` | `React.RefObject<any>` | Referência para o player de vídeo |
 
 ### Comportamento
 
@@ -54,9 +54,9 @@ O componente que renderiza o player de vídeo principal.
 ```tsx
 <MainPlayer
   currentVideoIndex={currentVideoIndex}
-  startTimeInVideo={startTimeInVideo}
   volume={volume}
   currentColor={currentColor}
+  playerRef={playerRef}
 />
 ```
 
@@ -69,7 +69,7 @@ O componente que renderiza o vídeo de fundo desfocado.
 | Prop | Tipo | Descrição |
 |------|------|-----------|
 | `currentVideoIndex` | `number` | Índice do vídeo atual na playlist |
-| `startTimeInVideo` | `number` | Tempo de início dentro do vídeo atual (em segundos) |
+| `playerRef` | `React.RefObject<any>` | Referência para o player de vídeo |
 
 ### Comportamento
 
@@ -82,7 +82,7 @@ O componente que renderiza o vídeo de fundo desfocado.
 ```tsx
 <BackgroundVideo
   currentVideoIndex={currentVideoIndex}
-  startTimeInVideo={startTimeInVideo}
+  playerRef={playerRef}
 />
 ```
 
@@ -210,19 +210,25 @@ Não possui props.
 
 ### useVideoTime
 
-Hook para gerenciar o tempo de reprodução do vídeo.
+Hook para gerenciar a reprodução dos vídeos.
 
 #### Retorno
 
 | Prop | Tipo | Descrição |
 |------|------|-----------|
 | `currentVideoIndex` | `number` | Índice do vídeo atual na playlist |
-| `startTimeInVideo` | `number` | Tempo de início dentro do vídeo atual (em segundos) |
+| `playerRef` | `React.RefObject<any>` | Referência para o player de vídeo |
+
+#### Comportamento
+
+- Gerencia a reprodução sequencial dos vídeos
+- Quando um vídeo termina, avança para o próximo
+- Quando chega ao último vídeo, volta para o primeiro
 
 #### Exemplo de Uso
 
 ```tsx
-const { currentVideoIndex, startTimeInVideo } = useVideoTime();
+const { currentVideoIndex, playerRef } = useVideoTime();
 ```
 
 ### useVolume
