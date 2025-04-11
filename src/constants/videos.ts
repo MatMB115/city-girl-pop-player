@@ -41,4 +41,10 @@ export const playlist = [
         themeColor: "#ffaa00", // orange neon
         title: "City Pop Girl Mix - Secret of Summer"
     },
+    {
+        url: "https://www.youtube.com/watch?v=XbGVJJ9cW6k",
+        duration: 4144,
+        themeColor: "#a066ff", // orange neon
+        title: "City Pop Girl Mix - After Goodbye"
+    },
 ];
