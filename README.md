@@ -1,8 +1,8 @@
 # City Pop Girl Player 🎵
 
-Um player de música web elegante e estilizado para fãs de City Pop Girl, com uma interface moderna e experiência de usuário imersiva.
+Um rádio web e estilizado para fãs de City Pop Girl.
 
-![City Pop Girl Player](https://via.placeholder.com/800x400?text=City+Pop+Girl+Player)
+![City Pop Girl Player](https://imgur.com/vtTiJEK.png)
 
 ## 📋 Índice
 
@@ -24,9 +24,6 @@ City Pop Girl Player é uma aplicação web que reproduz uma playlist de música
 - **Reprodução Sincronizada**: Todos os usuários ouvem a mesma parte da música ao mesmo tempo
 - **Interface Estilizada**: Design moderno com efeitos visuais neon que mudam de acordo com a música
 - **Controle de Volume**: Ajuste de volume com indicador visual
-- **Aviso de Mudo**: Notificação para ativar o som quando o volume está zerado
-- **Vídeo de Fundo**: Efeito de vídeo desfocado como plano de fundo
-- **Responsividade**: Interface adaptável a diferentes tamanhos de tela
 - **Links Sociais**: Acesso rápido às redes sociais do City Pop Girl
 
 ## 🛠️ Tecnologias Utilizadas
@@ -116,14 +113,6 @@ A aplicação reproduz automaticamente uma playlist de vídeos City Pop Girl. O 
 - Clique no ícone de alto-falante para alternar entre mudo e volume padrão
 - O volume padrão é definido como 60% quando ativado
 
-### Links Sociais
-
-Os links para as redes sociais do City Pop Girl estão disponíveis no canto superior direito da tela:
-- YouTube
-- GitHub
-- Instagram
-- Spotify
-
 ## 🤝 Contribuição
 
 Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests.
@@ -136,8 +125,8 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar
 
 ## 📄 Licença
 
-Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
+Este projeto está licenciado sob a licença GNU 3.0 - veja o arquivo [LICENSE](LICENSE) para detalhes.
 
 ---
 
-Desenvolvido com ❤️ por [Maysu](https://maysu.xyz/)
+Desenvolvido com 🩵 por [Maysu](https://maysu.xyz/)
