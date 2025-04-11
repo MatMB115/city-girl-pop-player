@@ -14,7 +14,7 @@ import { VideoTitle } from "./player/VideoTitle";
 
 export default function VideoPlayer() {
     const { currentVideoIndex, startTimeInVideo } = useVideoTime();
-    const { volume, showMutedNotice, toggleMute, setVolume, setShowMutedNotice } = useVolume();
+    const { volume, showMutedNotice, toggleMute, setVolume } = useVolume();
     const currentColor = playlist[currentVideoIndex].themeColor;
 
     return (
