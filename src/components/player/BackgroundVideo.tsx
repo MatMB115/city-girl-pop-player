@@ -1,4 +1,5 @@
-import ReactPlayer from "react-player/youtube";
+import React from "react";
+import ReactPlayer from "./ReactPlayerWrapper";
 import { playlist } from "@/constants/videos";
 
 interface BackgroundVideoProps {
@@ -23,4 +24,4 @@ export const BackgroundVideo = ({
             />
         </div>
     );
-}; 
+};

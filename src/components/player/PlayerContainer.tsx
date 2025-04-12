@@ -1,4 +1,4 @@
-import ReactPlayer from "react-player/youtube";
+import ReactPlayer from "./ReactPlayerWrapper"; // ou "@/components/player/ReactPlayerWrapper"
 import { playlist } from "@/constants/videos";
 
 interface PlayerContainerProps {
@@ -43,4 +43,4 @@ export const PlayerContainer = ({
             </div>
         </div>
     );
-}; 
+};
