@@ -52,7 +52,6 @@ export const useVideoTime = (): VideoTimeState => {
         };
     }, [state.currentVideoIndex]);
 
-    // Update state with changeVideo function
     useEffect(() => {
         setState(prev => ({
             ...prev,

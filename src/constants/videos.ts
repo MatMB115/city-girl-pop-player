@@ -47,4 +47,16 @@ export const playlist = [
         themeColor: "#a066ff", // orange neon
         title: "City Pop Girl Mix - After Goodbye"
     },
+    {
+        url: "https://www.youtube.com/watch?v=uu6Tt8Wunf8",
+        duration: 3683,
+        themeColor: "#ff0000", // red neon
+        title: "City Pop Girl Mix - Mirage Runner"
+    },
+    {
+        url: "https://www.youtube.com/watch?v=wfq-sRfgfHw",
+        duration: 3683,
+        themeColor: "#F2E8C8", // pastel yellow
+        title: "City Pop Girl Mix - Mirage Runner"
+    },
 ];

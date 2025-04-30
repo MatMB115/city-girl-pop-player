@@ -11,7 +11,7 @@ import { BackgroundVideo } from "@/components/player/BackgroundVideo";
 import { PlayerContainer } from "@/components/player/PlayerContainer";
 import { MutedNotice } from "@/components/player/MutedNotice";
 import { VideoTitle } from "@/components/player/VideoTitle";
-import { NavigationButtons } from "@/components/player/NavigationButtons";
+import { VideoNavButton } from "@/components/player/VideoNavButton";
 
 export default function VideoPlayer() {
     const { currentVideoIndex, playerRef, changeVideo } = useVideoPlayer();
@@ -33,7 +33,7 @@ export default function VideoPlayer() {
                     currentColor={currentColor}
                     playerRef={playerRef}
                 />
-                <NavigationButtons
+                <VideoNavButton
                     currentVideoIndex={currentVideoIndex}
                     onVideoChange={changeVideo}
                     currentColor={currentColor}
