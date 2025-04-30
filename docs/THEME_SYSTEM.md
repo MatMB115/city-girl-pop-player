@@ -33,7 +33,6 @@ export const playlist = [
 O tema atual é obtido no componente `VideoPlayer` com base no índice do vídeo atual:
 
 ```tsx
-const { currentVideoIndex, startTimeInVideo } = useVideoTime();
 const currentColor = playlist[currentVideoIndex].themeColor;
 ```
 

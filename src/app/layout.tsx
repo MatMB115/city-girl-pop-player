@@ -15,6 +15,22 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "City Pop Girl",
   description: "Web radio for City Pop Girl lovers",
+  openGraph: {
+    title: "City Pop Girl Player",
+    description: "Web radio for City Pop Girl lovers",
+    type: "website",
+    locale: "en_US",
+    siteName: "citygirlpop.space",
+    images: [
+      {
+        url: "https://imgur.com/gpwtHaR.png",
+        width: 900,
+        height: 530,
+        alt: "citygirlpop.space",
+      },
+    ],
+  },
+
 };
 
 export default function RootLayout({
