@@ -9,20 +9,17 @@ Este documento fornece informações técnicas detalhadas sobre o projeto City P
 City Pop Girl Player é uma aplicação Next.js que utiliza React para criar uma interface de usuário interativa para reprodução de vídeos. A aplicação é construída com TypeScript para garantir tipagem estática e utiliza Tailwind CSS para estilização.
 
 ### Fluxo de Dados
-
-1. **Sincronização de Tempo**: O hook `useVideoTime` calcula o tempo atual de reprodução com base em um timestamp de referência fixo.
-2. **Gerenciamento de Estado**: O estado da aplicação é gerenciado através de hooks React personalizados.
-3. **Reprodução de Vídeo**: O componente `ReactPlayer` é utilizado para reproduzir vídeos do YouTube.
+1. **Gerenciamento de Estado**: O estado da aplicação é gerenciado através de hooks React personalizados.
+2. **Reprodução de Vídeo**: O componente `ReactPlayer` é utilizado para reproduzir vídeos do YouTube.
 
 ## 🔧 Componentes Principais
 
 ### VideoPlayer
 
-O componente principal que orquestra todos os outros componentes do player. Ele utiliza os hooks `useVideoTime` e `useVolume` para gerenciar o estado da aplicação.
+O componente principal que orquestra todos os outros componentes do player. Ele utiliza os hooks `useVolume` para gerenciar o estado da aplicação.
 
 ```tsx
 export default function VideoPlayer() {
-    const { currentVideoIndex, startTimeInVideo } = useVideoTime();
     const { volume, showMutedNotice, toggleMute, setVolume, setShowMutedNotice } = useVolume();
     const currentColor = playlist[currentVideoIndex].themeColor;
 
@@ -82,26 +79,6 @@ export const MainPlayer = ({
 
 ## 🧩 Hooks Personalizados
 
-### useVideoTime
-
-Este hook calcula o tempo atual de reprodução com base em um timestamp de referência fixo. Ele retorna o índice do vídeo atual e o tempo de início dentro do vídeo.
-
-```tsx
-export const useVideoTime = (): VideoTimeState => {
-    const [state, setState] = useState<VideoTimeState>(calculateVideoTime);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setState(calculateVideoTime());
-        }, 1000);
-
-        return () => clearInterval(interval);
-    }, []);
-
-    return state;
-};
-```
-
 ### useVolume
 
 Este hook gerencia o estado do volume e fornece funções para controlá-lo.
@@ -153,7 +130,7 @@ export const playlist = [
 ### Convenções de Nomenclatura
 
 - **Componentes**: PascalCase (ex: `VideoPlayer`, `MainPlayer`)
-- **Hooks**: camelCase com prefixo "use" (ex: `useVideoTime`, `useVolume`)
+- **Hooks**: camelCase com prefixo "use" (ex: `useVideoPlayer`, `useVolume`)
 - **Funções**: camelCase (ex: `calculateVideoTime`, `toggleMute`)
 - **Variáveis**: camelCase (ex: `currentVideoIndex`, `startTimeInVideo`)
 - **Interfaces**: PascalCase (ex: `VideoTimeState`, `VolumeState`)

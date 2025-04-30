@@ -6,14 +6,20 @@ Um rádio web e estilizado para fãs de City Pop Girl.
 
 ## 📋 Índice
 
-- [Visão Geral](#visão-geral)
-- [Funcionalidades](#funcionalidades)
-- [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [Estrutura do Projeto](#estrutura-do-projeto)
-- [Instalação](#instalação)
-- [Uso](#uso)
-- [Contribuição](#contribuição)
-- [Licença](#licença)
+- [City Pop Girl Player 🎵](#city-pop-girl-player-)
+  - [📋 Índice](#-índice)
+  - [🎯 Visão Geral](#-visão-geral)
+  - [✨ Funcionalidades](#-funcionalidades)
+  - [🛠️ Tecnologias Utilizadas](#️-tecnologias-utilizadas)
+  - [📁 Estrutura do Projeto](#-estrutura-do-projeto)
+  - [🚀 Instalação](#-instalação)
+    - [Pré-requisitos](#pré-requisitos)
+    - [Passos para Instalação](#passos-para-instalação)
+  - [💻 Uso](#-uso)
+    - [Reprodução de Vídeos](#reprodução-de-vídeos)
+    - [Controle de Volume](#controle-de-volume)
+  - [🤝 Contribuição](#-contribuição)
+  - [📄 Licença](#-licença)
 
 ## 🎯 Visão Geral
 
@@ -59,7 +65,7 @@ city-girl-pop-player/
 │   ├── constants/           # Constantes da aplicação
 │   │   └── videos.ts        # Lista de vídeos
 │   ├── hooks/               # Hooks personalizados
-│   │   ├── useVideoTime.ts  # Hook para gerenciar o tempo do vídeo
+│   │   ├── useVideoPlayer.ts  # Hook para gerenciar o vídeo atual
 │   │   └── useVolume.ts     # Hook para gerenciar o volume
 │   └── utils/               # Funções utilitárias
 ├── .gitignore               # Arquivos ignorados pelo Git
