@@ -47,6 +47,7 @@ function VideoPlayerContent({
     return (
         <div className="flex flex-col h-screen">
             <div className="relative w-full h-screen overflow-hidden select-none">
+                <WelcomeAnimation currentColor={currentColor} />
                 <SocialLinks />
                 <BackgroundVideo playerRef={playerRef} />
                 <VideoTitle />
@@ -67,7 +68,6 @@ function VideoPlayerContent({
                     onVolumeChange={setVolume}
                     onToggleMute={toggleMute}
                 />
-                <WelcomeAnimation currentColor={currentColor} />
             </div>
             <Footer />
         </div>

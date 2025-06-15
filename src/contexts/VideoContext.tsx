@@ -35,8 +35,7 @@ export function VideoProvider({ children }: { children: React.ReactNode }) {
             setIsLoaded(true);
         };
 
-        const timer = setTimeout(loadInitialState, 100);
-        return () => clearTimeout(timer);
+        loadInitialState();
     }, []);
 
     useEffect(() => {
