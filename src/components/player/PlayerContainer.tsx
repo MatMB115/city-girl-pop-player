@@ -1,11 +1,13 @@
 import ReactPlayer from "./ReactPlayerWrapper"; // ou "@/components/player/ReactPlayerWrapper"
 import { playlist } from "@/constants/videos";
+import { TransitionOverlay } from "./TransitionOverlay";
 
 interface PlayerContainerProps {
     currentVideoIndex: number;
     volume: number;
     currentColor: string;
     playerRef: React.RefObject<any>;
+    isTransitioning: boolean;
 }
 
 export const PlayerContainer = ({
@@ -13,11 +15,12 @@ export const PlayerContainer = ({
     volume,
     currentColor,
     playerRef,
+    isTransitioning,
 }: PlayerContainerProps) => {
     return (
         <div className="relative z-10 flex items-center justify-center h-full px-4">
             <div
-                className={`w-full max-w-5xl aspect-video rounded-2xl overflow-hidden border-4`}
+                className={`w-full max-w-5xl aspect-video rounded-2xl overflow-hidden border-4 relative`}
                 style={{
                     borderColor: currentColor,
                     boxShadow: `0 0 15px 4px ${currentColor}, 0 0 30px 8px ${currentColor}33`,
@@ -40,6 +43,11 @@ export const PlayerContainer = ({
                         }}
                     />
                 </div>
+                <TransitionOverlay
+                    isTransitioning={isTransitioning}
+                    currentColor={currentColor}
+                    variant="player"
+                />
             </div>
         </div>
     );

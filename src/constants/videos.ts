@@ -44,7 +44,7 @@ export const playlist = [
     {
         url: "https://www.youtube.com/watch?v=XbGVJJ9cW6k",
         duration: 4144,
-        themeColor: "#a066ff", // orange neon
+        themeColor: "#a066ff", // purple neon
         title: "City Pop Girl Mix - After Goodbye"
     },
     {
@@ -59,4 +59,34 @@ export const playlist = [
         themeColor: "#F2E8C8", // pastel yellow
         title: "City Pop Girl Mix - Mirage Runner"
     },
+    {
+        url: "https://www.youtube.com/watch?v=eKmophnMKso",
+        duration: 3680,
+        themeColor: "#e86bd5", // deep sky blue
+        title: "City Pop Girl Mix - Midnight Drive"
+    },
+    {
+        url: "https://www.youtube.com/watch?v=qmho-dkclOo",
+        duration: 3720,
+        themeColor: "#ff0000", // deep pink
+        title: "City Pop Girl Mix - Neon Dreams"
+    },
+    {
+        url: "https://www.youtube.com/watch?v=ZTQCo78nqi8",
+        duration: 3650,
+        themeColor: "#f1ff28", // medium slate blue
+        title: "City Pop Girl Mix - Electric Night"
+    },
+    {
+        url: "https://www.youtube.com/watch?v=ZanRHDvjhJs",
+        duration: 3690,
+        themeColor: "#43aecf", // orange red
+        title: "City Pop Girl Mix - Sunset Boulevard"
+    },
+    {
+        url: "https://www.youtube.com/watch?v=XPoPfueSncc",
+        duration: 3710,
+        themeColor: "#cf434e", // light sea green
+        title: "City Pop Girl Mix - Ocean Breeze"
+    }
 ];

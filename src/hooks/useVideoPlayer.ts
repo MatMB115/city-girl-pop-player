@@ -5,6 +5,7 @@ interface VideoPlayerState {
     currentVideoIndex: number;
     playerRef: React.RefObject<any>;
     startTimeInVideo: number;
+    isTransitioning: boolean;
     changeVideo: (index: number) => void;
 }
 
@@ -13,6 +14,7 @@ export const useVideoPlayer = (): VideoPlayerState => {
         currentVideoIndex: 0,
         playerRef: useRef<any>(null),
         startTimeInVideo: 0,
+        isTransitioning: false,
         changeVideo: () => { }
     });
 
@@ -22,7 +24,8 @@ export const useVideoPlayer = (): VideoPlayerState => {
             return {
                 ...prevState,
                 currentVideoIndex: nextIndex,
-                startTimeInVideo: 0
+                startTimeInVideo: 0,
+                isTransitioning: true
             };
         });
     };
@@ -31,7 +34,8 @@ export const useVideoPlayer = (): VideoPlayerState => {
         setState(prevState => ({
             ...prevState,
             currentVideoIndex: index,
-            startTimeInVideo: 0
+            startTimeInVideo: 0,
+            isTransitioning: true
         }));
     };
 
@@ -58,6 +62,19 @@ export const useVideoPlayer = (): VideoPlayerState => {
             changeVideo
         }));
     }, []);
+
+    // Reset transition state after animation
+    useEffect(() => {
+        if (state.isTransitioning) {
+            const timer = setTimeout(() => {
+                setState(prev => ({
+                    ...prev,
+                    isTransitioning: false
+                }));
+            }, 700); // Match the transition duration
+            return () => clearTimeout(timer);
+        }
+    }, [state.isTransitioning]);
 
     return state;
 }; 

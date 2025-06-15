@@ -14,7 +14,7 @@ import { VideoTitle } from "@/components/player/VideoTitle";
 import { VideoNavButton } from "@/components/player/VideoNavButton";
 
 export default function VideoPlayer() {
-    const { currentVideoIndex, playerRef, changeVideo } = useVideoPlayer();
+    const { currentVideoIndex, playerRef, changeVideo, isTransitioning } = useVideoPlayer();
     const { volume, showMutedNotice, toggleMute, setVolume } = useVolume();
     const currentColor = playlist[currentVideoIndex].themeColor;
 
@@ -25,6 +25,7 @@ export default function VideoPlayer() {
                 <BackgroundVideo
                     currentVideoIndex={currentVideoIndex}
                     playerRef={playerRef}
+                    isTransitioning={isTransitioning}
                 />
                 <VideoTitle currentVideoIndex={currentVideoIndex} />
                 <PlayerContainer
@@ -32,6 +33,7 @@ export default function VideoPlayer() {
                     volume={volume}
                     currentColor={currentColor}
                     playerRef={playerRef}
+                    isTransitioning={isTransitioning}
                 />
                 <VideoNavButton
                     currentVideoIndex={currentVideoIndex}
