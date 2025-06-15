@@ -1,12 +1,15 @@
-import React from "react";
-import { playlist } from "@/constants/videos";
+"use client";
 
-interface VideoTitleProps {
-    currentVideoIndex: number;
-}
+import { useVideo } from '@/contexts/VideoContext';
+import { playlist } from '@/constants/videos';
 
-export function VideoTitle({ currentVideoIndex }: VideoTitleProps) {
+export function VideoTitle() {
+    const { currentVideoIndex, isLoaded } = useVideo();
     const currentVideo = playlist[currentVideoIndex];
+
+    if (!isLoaded) {
+        return null;
+    }
 
     return (
         <div className="absolute top-4 left-4 z-10">

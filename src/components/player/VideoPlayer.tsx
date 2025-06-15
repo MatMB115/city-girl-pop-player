@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import { playlist } from "@/constants/videos";
 import Footer from "@/components/common/Footer";
-import { useVideoPlayer } from "@/hooks/useVideoPlayer";
 import { useVolume } from "@/hooks/useVolume";
 import { VolumeControl } from "@/components/player/VolumeControl";
 import { SocialLinks } from "@/components/common/SocialLinks";
@@ -12,29 +11,46 @@ import { PlayerContainer } from "@/components/player/PlayerContainer";
 import { MutedNotice } from "@/components/player/MutedNotice";
 import { VideoTitle } from "@/components/player/VideoTitle";
 import { VideoNavButton } from "@/components/player/VideoNavButton";
+import { WelcomeAnimation } from "@/components/player/WelcomeAnimation";
+import { VideoProvider, useVideo } from "@/contexts/VideoContext";
 
 export default function VideoPlayer() {
-    const { currentVideoIndex, playerRef, changeVideo, isTransitioning } = useVideoPlayer();
     const { volume, showMutedNotice, toggleMute, setVolume } = useVolume();
+
+    return (
+        <VideoProvider>
+            <VideoPlayerContent 
+                volume={volume}
+                showMutedNotice={showMutedNotice}
+                toggleMute={toggleMute}
+                setVolume={setVolume}
+            />
+        </VideoProvider>
+    );
+}
+
+function VideoPlayerContent({ 
+    volume, 
+    showMutedNotice, 
+    toggleMute, 
+    setVolume 
+}: { 
+    volume: number;
+    showMutedNotice: boolean;
+    toggleMute: () => void;
+    setVolume: (volume: number) => void;
+}) {
+    const playerRef = useRef<any>(null);
+    const { currentVideoIndex, isLoaded, changeVideo } = useVideo();
     const currentColor = playlist[currentVideoIndex].themeColor;
 
     return (
         <div className="flex flex-col h-screen">
             <div className="relative w-full h-screen overflow-hidden select-none">
                 <SocialLinks />
-                <BackgroundVideo
-                    currentVideoIndex={currentVideoIndex}
-                    playerRef={playerRef}
-                    isTransitioning={isTransitioning}
-                />
-                <VideoTitle currentVideoIndex={currentVideoIndex} />
-                <PlayerContainer
-                    currentVideoIndex={currentVideoIndex}
-                    volume={volume}
-                    currentColor={currentColor}
-                    playerRef={playerRef}
-                    isTransitioning={isTransitioning}
-                />
+                <BackgroundVideo playerRef={playerRef} />
+                <VideoTitle />
+                <PlayerContainer volume={volume} />
                 <VideoNavButton
                     currentVideoIndex={currentVideoIndex}
                     onVideoChange={changeVideo}
@@ -51,6 +67,7 @@ export default function VideoPlayer() {
                     onVolumeChange={setVolume}
                     onToggleMute={toggleMute}
                 />
+                <WelcomeAnimation currentColor={currentColor} />
             </div>
             <Footer />
         </div>

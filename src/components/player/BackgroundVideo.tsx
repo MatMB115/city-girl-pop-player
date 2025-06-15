@@ -1,19 +1,22 @@
+"use client";
+
 import React from "react";
-import ReactPlayer from "./ReactPlayerWrapper";
+import ReactPlayer from "react-player";
 import { playlist } from "@/constants/videos";
 import { TransitionOverlay } from "./TransitionOverlay";
+import { useVideo } from "@/contexts/VideoContext";
 
 interface BackgroundVideoProps {
-    currentVideoIndex: number;
     playerRef: React.RefObject<any>;
-    isTransitioning: boolean;
 }
 
-export const BackgroundVideo = ({
-    currentVideoIndex,
-    playerRef,
-    isTransitioning
-}: BackgroundVideoProps) => {
+export const BackgroundVideo = ({ playerRef }: BackgroundVideoProps) => {
+    const { currentVideoIndex, isTransitioning, isLoaded } = useVideo();
+
+    if (!isLoaded) {
+        return null;
+    }
+
     return (
         <div className="absolute inset-0 z-0 scale-[3] sm:scale-[2] md:scale-[1.2] filter blur-[2px] md:blur-xs opacity-60">
             <ReactPlayer

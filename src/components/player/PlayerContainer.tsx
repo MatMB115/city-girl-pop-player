@@ -1,22 +1,23 @@
-import ReactPlayer from "./ReactPlayerWrapper"; // ou "@/components/player/ReactPlayerWrapper"
+"use client";
+
+import React from "react";
+import ReactPlayer from "react-player";
 import { playlist } from "@/constants/videos";
 import { TransitionOverlay } from "./TransitionOverlay";
+import { useVideo } from "@/contexts/VideoContext";
 
 interface PlayerContainerProps {
-    currentVideoIndex: number;
     volume: number;
-    currentColor: string;
-    playerRef: React.RefObject<any>;
-    isTransitioning: boolean;
 }
 
-export const PlayerContainer = ({
-    currentVideoIndex,
-    volume,
-    currentColor,
-    playerRef,
-    isTransitioning,
-}: PlayerContainerProps) => {
+export const PlayerContainer = ({ volume }: PlayerContainerProps) => {
+    const { currentVideoIndex, isTransitioning, isLoaded } = useVideo();
+    const currentColor = playlist[currentVideoIndex].themeColor;
+
+    if (!isLoaded) {
+        return null;
+    }
+
     return (
         <div className="relative z-10 flex items-center justify-center h-full px-4">
             <div
@@ -28,7 +29,6 @@ export const PlayerContainer = ({
             >
                 <div className="w-full h-[102%] md:h-[100.5%] pointer-events-none">
                     <ReactPlayer
-                        ref={playerRef}
                         url={playlist[currentVideoIndex].url}
                         playing
                         volume={volume}
@@ -36,9 +36,11 @@ export const PlayerContainer = ({
                         width="100%"
                         height="100%"
                         config={{
-                            playerVars: {
-                                modestbranding: 1,
-                                rel: 0,
+                            youtube: {
+                                playerVars: {
+                                    modestbranding: 1,
+                                    rel: 0,
+                                },
                             },
                         }}
                     />
