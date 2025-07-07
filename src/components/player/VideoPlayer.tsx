@@ -47,7 +47,7 @@ function VideoPlayerContent({
     return (
         <div className="flex flex-col h-screen">
             <div className="relative w-full h-screen overflow-hidden select-none">
-                <WelcomeAnimation currentColor={currentColor} />
+                <WelcomeAnimation />
                 <SocialLinks />
                 <BackgroundVideo playerRef={playerRef} />
                 <VideoTitle />
