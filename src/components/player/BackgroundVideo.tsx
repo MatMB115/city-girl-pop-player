@@ -26,7 +26,14 @@ export const BackgroundVideo = ({ playerRef }: BackgroundVideoProps) => {
                 muted
                 width="100%"
                 height="100%"
-                config={{ playerVars: { modestbranding: 1, rel: 0 } }}
+                config={{
+                    youtube: {
+                        playerVars: {
+                            modestbranding: 1,
+                            rel: 0,
+                        },
+                    },
+                }}
             />
             <TransitionOverlay
                 isTransitioning={isTransitioning}
