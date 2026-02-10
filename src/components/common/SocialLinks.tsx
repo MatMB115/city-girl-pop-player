@@ -31,10 +31,10 @@ export const SocialLinks = () => {
                 href="https://open.spotify.com/artist/2H106ZDIzq2otoHBVVxbtv?si=vpdtmJYASASo3C5_cOW4gw"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="absolute top-64 sm:top-68 md:top-72 right-4 sm:right-6 z-20 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors"
+                className="absolute top-64 sm:top-[17rem] md:top-72 right-4 sm:right-6 z-20 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors"
             >
                 <SpotifyLogo size={24} weight="fill" />
             </a>
         </>
     );
-}; 
+};

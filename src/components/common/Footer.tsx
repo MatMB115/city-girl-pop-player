@@ -4,7 +4,7 @@ export default function Footer() {
             <div className="max-w-5xl mx-auto flex flex-row items-center justify-between gap-2">
                 <span>© {new Date().getFullYear()} CityPopGirl.</span>
                 <span>
-                    Dev with 🩵 by { }
+                    Dev with 🩵 by{" "}
                     <a href="https://maysu.xyz/" target="_blank" rel="noopener noreferrer" className="hover:underline">
                         Maysu
                     </a>
@@ -12,4 +12,4 @@ export default function Footer() {
             </div>
         </footer>
     );
-} 
+}

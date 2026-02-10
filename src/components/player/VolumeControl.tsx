@@ -20,7 +20,7 @@ export const VolumeControl = ({
     };
 
     return (
-        <div className="absolute bottom-13 right-3 md:bottom-16 md:right-6 z-20 flex items-center gap-2 bg-black/50 text-white px-4 py-2 rounded-full text-sm w-[260px]">
+        <div className="absolute bottom-[3.25rem] right-3 md:bottom-16 md:right-6 z-20 flex items-center gap-2 bg-black/50 text-white px-4 py-2 rounded-full text-sm w-[260px]">
             <span className="cursor-pointer" onClick={onToggleMute}>{getVolumeIcon()}</span>
             <input
                 type="range"

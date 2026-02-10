@@ -6,19 +6,23 @@ interface VideoNavButtonProps {
     currentVideoIndex: number;
     onVideoChange: (index: number) => void;
     currentColor: string;
+    disabled?: boolean;
 }
 
 export const VideoNavButton = ({
     currentVideoIndex,
     onVideoChange,
     currentColor,
+    disabled = false,
 }: VideoNavButtonProps) => {
     const handlePrevious = () => {
+        if (disabled) return;
         const newIndex = currentVideoIndex === 0 ? playlist.length - 1 : currentVideoIndex - 1;
         onVideoChange(newIndex);
     };
 
     const handleNext = () => {
+        if (disabled) return;
         const newIndex = (currentVideoIndex + 1) % playlist.length;
         onVideoChange(newIndex);
     };
@@ -33,6 +37,7 @@ export const VideoNavButton = ({
                         icon={CaretLeft}
                         rotateDirection="left"
                         color={currentColor}
+                        disabled={disabled}
                     />
                 </div>
                 <div className="absolute right-4 top-1/2 -translate-y-1/2 z-20">
@@ -41,6 +46,7 @@ export const VideoNavButton = ({
                         icon={CaretRight}
                         rotateDirection="right"
                         color={currentColor}
+                        disabled={disabled}
                     />
                 </div>
             </div>
@@ -52,12 +58,14 @@ export const VideoNavButton = ({
                     icon={CaretLeft}
                     rotateDirection="left"
                     color={currentColor}
+                    disabled={disabled}
                 />
                 <NavButton
                     onClick={handleNext}
                     icon={CaretRight}
                     rotateDirection="right"
                     color={currentColor}
+                    disabled={disabled}
                 />
             </div>
         </>

@@ -5,6 +5,7 @@ interface NavButtonProps {
     icon: React.ComponentType<IconProps>;
     rotateDirection?: "left" | "right";
     color: string;
+    disabled?: boolean;
 }
 
 export const NavButton = ({
@@ -12,6 +13,7 @@ export const NavButton = ({
     icon: Icon,
     rotateDirection,
     color,
+    disabled = false,
 }: NavButtonProps) => {
     const rotateClass = rotateDirection === "left"
         ? "hover:rotate-[-5deg]"
@@ -25,14 +27,16 @@ export const NavButton = ({
 
     return (
         <button
-            onClick={onClick}
-            className={`bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition-all duration-300 hover:scale-110 group cursor-pointer ${rotateClass}`}
+            onClick={disabled ? undefined : onClick}
+            disabled={disabled}
+            aria-disabled={disabled}
+            className={`bg-black/50 text-white p-3 rounded-full transition-all duration-300 group ${disabled ? "opacity-50 cursor-not-allowed" : `hover:bg-black/70 hover:scale-110 cursor-pointer ${rotateClass}`}`}
             style={buttonStyle}
         >
             <Icon
                 size={32}
                 weight="fill"
-                className="transition-transform duration-300 group-hover:scale-110"
+                className={`transition-transform duration-300 ${disabled ? "" : "group-hover:scale-110"}`}
             />
         </button>
     );

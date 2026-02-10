@@ -27,7 +27,8 @@ City Pop Girl Player é uma aplicação web que reproduz uma playlist de música
 
 ## ✨ Funcionalidades
 
-- **Reprodução Sincronizada**: Todos os usuários ouvem a mesma parte da música ao mesmo tempo
+- **Reprodução Sincronizada (Ao vivo)**: Todos os usuários ouvem a mesma parte da música ao mesmo tempo
+- **Modo Livre**: Um botão alterna para controle manual (troca de faixa) e permite voltar ao ao vivo
 - **Interface Estilizada**: Design moderno com efeitos visuais neon que mudam de acordo com a música
 - **Controle de Volume**: Ajuste de volume com indicador visual
 - **Links Sociais**: Acesso rápido às redes sociais do City Pop Girl
@@ -65,7 +66,8 @@ city-girl-pop-player/
 │   ├── constants/           # Constantes da aplicação
 │   │   └── videos.ts        # Lista de vídeos
 │   ├── hooks/               # Hooks personalizados
-│   │   ├── useVideoPlayer.ts  # Hook para gerenciar o vídeo atual
+│   │   ├── useServerTimeOffset.ts # Sincroniza relógio com o servidor
+│   │   ├── usePlayerSync.ts # Correção de drift/seek no player
 │   │   └── useVolume.ts     # Hook para gerenciar o volume
 │   └── utils/               # Funções utilitárias
 ├── .gitignore               # Arquivos ignorados pelo Git
@@ -111,7 +113,11 @@ city-girl-pop-player/
 
 ### Reprodução de Vídeos
 
-A aplicação reproduz automaticamente uma playlist de vídeos City Pop Girl. O tempo de reprodução é sincronizado com um timestamp de referência, garantindo que todos os usuários estejam ouvindo a mesma parte da música ao mesmo tempo.
+A aplicação reproduz automaticamente uma playlist de vídeos City Pop Girl. No modo **Ao vivo**, o tempo de reprodução é sincronizado via horário do servidor (Vercel) + um timestamp de referência, garantindo que todos os usuários estejam ouvindo a mesma parte da música ao mesmo tempo. No **Modo Livre**, você pode trocar de faixa manualmente e voltar ao **Ao vivo** quando quiser.
+
+### Configuração do modo Ao vivo
+
+- `NEXT_PUBLIC_STATION_EPOCH_MS`: timestamp (em ms) que define o “início” do ciclo da playlist. Se não definido, o app usa um valor padrão.
 
 ### Controle de Volume
 

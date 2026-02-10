@@ -12,6 +12,7 @@ import { MutedNotice } from "@/components/player/MutedNotice";
 import { VideoTitle } from "@/components/player/VideoTitle";
 import { VideoNavButton } from "@/components/player/VideoNavButton";
 import { WelcomeAnimation } from "@/components/player/WelcomeAnimation";
+import { ModeToggle } from "@/components/player/ModeToggle";
 import { VideoProvider, useVideo } from "@/contexts/VideoContext";
 
 export default function VideoPlayer() {
@@ -40,22 +41,26 @@ function VideoPlayerContent({
     toggleMute: () => void;
     setVolume: (volume: number) => void;
 }) {
-    const playerRef = useRef<any>(null);
-    const { currentVideoIndex, isLoaded, changeVideo } = useVideo();
+    const backgroundPlayerRef = useRef<any>(null);
+    const mainPlayerRef = useRef<any>(null);
+    const { currentVideoIndex, isLoaded, changeVideo, mode } = useVideo();
     const currentColor = playlist[currentVideoIndex].themeColor;
+    const isLive = mode === "live";
 
     return (
         <div className="flex flex-col h-screen">
             <div className="relative w-full h-screen overflow-hidden select-none">
                 <WelcomeAnimation />
                 <SocialLinks />
-                <BackgroundVideo playerRef={playerRef} />
+                <BackgroundVideo playerRef={backgroundPlayerRef} />
                 <VideoTitle />
-                <PlayerContainer volume={volume} />
+                <ModeToggle currentColor={currentColor} />
+                <PlayerContainer volume={volume} playerRef={mainPlayerRef} />
                 <VideoNavButton
                     currentVideoIndex={currentVideoIndex}
                     onVideoChange={changeVideo}
                     currentColor={currentColor}
+                    disabled={isLive || !isLoaded}
                 />
                 <MutedNotice
                     show={showMutedNotice}
