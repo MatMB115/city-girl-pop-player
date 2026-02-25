@@ -1,144 +1,122 @@
-# City Pop Girl Player 🎵
+# City Pop Girl Player
 
-Um rádio web e estilizado para fãs de City Pop Girl.
+Aplicação web de rádio para fãs de City Pop Girl, com reprodução sincronizada em tempo real e modo livre para navegação manual da playlist.
 
 ![City Pop Girl Player](https://imgur.com/vtTiJEK.png)
 
-## 📋 Índice
+## Visão Geral
 
-- [City Pop Girl Player 🎵](#city-pop-girl-player-)
-  - [📋 Índice](#-índice)
-  - [🎯 Visão Geral](#-visão-geral)
-  - [✨ Funcionalidades](#-funcionalidades)
-  - [🛠️ Tecnologias Utilizadas](#️-tecnologias-utilizadas)
-  - [📁 Estrutura do Projeto](#-estrutura-do-projeto)
-  - [🚀 Instalação](#-instalação)
-    - [Pré-requisitos](#pré-requisitos)
-    - [Passos para Instalação](#passos-para-instalação)
-  - [💻 Uso](#-uso)
-    - [Reprodução de Vídeos](#reprodução-de-vídeos)
-    - [Controle de Volume](#controle-de-volume)
-  - [🤝 Contribuição](#-contribuição)
-  - [📄 Licença](#-licença)
+O City Pop Girl Player reproduz uma playlist de mixes do YouTube com duas experiências de uso:
 
-## 🎯 Visão Geral
+- `Live`: todos os usuários escutam o mesmo ponto da programação ao mesmo tempo.
+- `Free`: o usuário pode navegar manualmente entre as faixas e voltar para o modo ao vivo quando quiser.
 
-City Pop Girl Player é uma aplicação web que reproduz uma playlist de músicas City Pop Girl em um player de vídeo estilizado. A aplicação sincroniza automaticamente o tempo de reprodução com um timestamp de referência, garantindo que todos os usuários estejam ouvindo a mesma parte da música ao mesmo tempo.
+A sincronização do modo ao vivo combina:
 
-## ✨ Funcionalidades
+- horário do cliente;
+- ajuste de offset com o horário do servidor (`/api/time`);
+- um timestamp de referência configurável por ambiente (`NEXT_PUBLIC_STATION_EPOCH_MS`).
 
-- **Reprodução Sincronizada (Ao vivo)**: Todos os usuários ouvem a mesma parte da música ao mesmo tempo
-- **Modo Livre**: Um botão alterna para controle manual (troca de faixa) e permite voltar ao ao vivo
-- **Interface Estilizada**: Design moderno com efeitos visuais neon que mudam de acordo com a música
-- **Controle de Volume**: Ajuste de volume com indicador visual
-- **Links Sociais**: Acesso rápido às redes sociais do City Pop Girl
+## Funcionalidades
 
-## 🛠️ Tecnologias Utilizadas
+- Reprodução sincronizada em modo ao vivo.
+- Modo livre com troca manual de faixa.
+- Retorno instantâneo do modo livre para o modo ao vivo.
+- Correção periódica de drift no player para manter sincronização.
+- Tema visual dinâmico por faixa (cor, brilho e transições).
+- Vídeo de fundo sincronizado com o player principal.
+- Controle de volume com botão de mute/unmute.
+- Links sociais para canais oficiais.
 
-- **Framework**: [Next.js](https://nextjs.org/) (v15.3.0)
-- **Linguagem**: [TypeScript](https://www.typescriptlang.org/)
-- **Estilização**: [Tailwind CSS](https://tailwindcss.com/)
-- **Reprodução de Vídeo**: [React Player](https://github.com/cookpete/react-player)
-- **Ícones**: [Phosphor Icons](https://phosphoricons.com/)
-- **Fontes**: [Geist](https://vercel.com/font)
+## Tecnologias
 
-## 📁 Estrutura do Projeto
+- Next.js 15
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- React Player
+- Phosphor Icons
 
-```
+## Estrutura do Projeto
+
+```text
 city-girl-pop-player/
-├── public/                  # Arquivos estáticos
+├── docs/
+│   ├── ADDING_VIDEOS.md
+│   └── THEME_SYSTEM.md
+├── public/
 ├── src/
-│   ├── app/                 # Páginas e layouts da aplicação
-│   │   ├── layout.tsx       # Layout principal
-│   │   ├── page.tsx         # Página inicial
-│   │   └── globals.css      # Estilos globais
-│   ├── components/          # Componentes React
-│   │   ├── common/          # Componentes comuns
-│   │   │   ├── Footer.tsx   # Rodapé da aplicação
-│   │   │   └── SocialLinks.tsx # Links para redes sociais
-│   │   ├── player/          # Componentes do player
-│   │   │   ├── BackgroundVideo.tsx # Vídeo de fundo
-│   │   │   ├── MainPlayer.tsx # Player principal
-│   │   │   ├── MutedNotice.tsx # Aviso de mudo
-│   │   │   ├── VideoTitle.tsx # Título do vídeo
-│   │   │   └── VolumeControl.tsx # Controle de volume
-│   │   └── VideoPlayer.tsx  # Componente principal do player
-│   ├── constants/           # Constantes da aplicação
-│   │   └── videos.ts        # Lista de vídeos
-│   ├── hooks/               # Hooks personalizados
-│   │   ├── useServerTimeOffset.ts # Sincroniza relógio com o servidor
-│   │   ├── usePlayerSync.ts # Correção de drift/seek no player
-│   │   └── useVolume.ts     # Hook para gerenciar o volume
-│   └── utils/               # Funções utilitárias
-├── .gitignore               # Arquivos ignorados pelo Git
-├── next.config.ts           # Configuração do Next.js
-├── package.json             # Dependências e scripts
-├── postcss.config.mjs       # Configuração do PostCSS
-├── tailwind.config.ts       # Configuração do Tailwind CSS
-└── tsconfig.json            # Configuração do TypeScript
+│   ├── app/
+│   │   ├── api/time/route.ts
+│   │   ├── favicon.ico
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   ├── components/
+│   │   ├── common/
+│   │   └── player/
+│   ├── constants/
+│   │   └── videos.ts
+│   ├── contexts/
+│   │   └── VideoContext.tsx
+│   └── hooks/
+│       ├── usePlayerSync.ts
+│       ├── useServerTimeOffset.ts
+│       └── useVolume.ts
+├── CONTRIBUTING.md
+├── LICENSE
+├── README.md
+└── package.json
 ```
 
-## 🚀 Instalação
+## Configuração
 
-### Pré-requisitos
+Variáveis de ambiente opcionais:
 
-- Node.js (v18 ou superior)
-- npm ou yarn
+- `NEXT_PUBLIC_STATION_EPOCH_MS`: timestamp em milissegundos que define o início do ciclo da estação.
 
-### Passos para Instalação
+Se não for definida, o projeto usa um valor padrão interno.
 
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/seu-usuario/city-girl-pop-player.git
-   cd city-girl-pop-player
-   ```
+## Instalação
 
-2. Instale as dependências:
-   ```bash
-   npm install
-   # ou
-   yarn install
-   ```
+Pré-requisitos:
 
-3. Inicie o servidor de desenvolvimento:
-   ```bash
-   npm run dev
-   # ou
-   yarn dev
-   ```
+- Node.js 18+
+- npm
 
-4. Acesse a aplicação em `http://localhost:3000`
+Passos:
 
-## 💻 Uso
+1. Clone o repositório.
+2. Instale dependências.
+3. Rode o ambiente de desenvolvimento.
 
-### Reprodução de Vídeos
+```bash
+git clone https://github.com/seu-usuario/city-girl-pop-player.git
+cd city-girl-pop-player
+npm install
+npm run dev
+```
 
-A aplicação reproduz automaticamente uma playlist de vídeos City Pop Girl. No modo **Ao vivo**, o tempo de reprodução é sincronizado via horário do servidor (Vercel) + um timestamp de referência, garantindo que todos os usuários estejam ouvindo a mesma parte da música ao mesmo tempo. No **Modo Livre**, você pode trocar de faixa manualmente e voltar ao **Ao vivo** quando quiser.
+Aplicação disponível em `http://localhost:3000`.
 
-### Configuração do modo Ao vivo
+## Uso
 
-- `NEXT_PUBLIC_STATION_EPOCH_MS`: timestamp (em ms) que define o “início” do ciclo da playlist. Se não definido, o app usa um valor padrão.
+- Modo `Live`: sincronização automática da programação.
+- Modo `Free`: habilita navegação manual com botões de próxima/anterior.
+- Botão `Back to Live`: retorna para a transmissão sincronizada.
+- Controle de volume no canto inferior direito.
 
-### Controle de Volume
+## Documentação Complementar
 
-- Use o controle deslizante para ajustar o volume
-- Clique no ícone de alto-falante para alternar entre mudo e volume padrão
-- O volume padrão é definido como 60% quando ativado
+- [Como adicionar vídeos](docs/ADDING_VIDEOS.md)
+- [Sistema de temas](docs/THEME_SYSTEM.md)
 
-## 🤝 Contribuição
+## Contribuição
 
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests.
+Consulte [CONTRIBUTING.md](CONTRIBUTING.md) para fluxo de contribuição.
 
-1. Faça um fork do projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/nova-feature`)
-3. Faça commit das suas alterações (`git commit -m 'Adiciona nova feature'`)
-4. Faça push para a branch (`git push origin feature/nova-feature`)
-5. Abra um Pull Request
+## Licença
 
-## 📄 Licença
+Este projeto está licenciado sob GNU GPL v3. Consulte [LICENSE](LICENSE).
 
-Este projeto está licenciado sob a licença GNU 3.0 - veja o arquivo [LICENSE](LICENSE) para detalhes.
-
----
-
-Desenvolvido com 🩵 por [Maysu](https://maysu.xyz/)
+Desenvolvido por [Maysu](https://maysu.xyz/)
